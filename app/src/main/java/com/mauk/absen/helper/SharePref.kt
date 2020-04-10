@@ -2,6 +2,7 @@ package com.mauk.absen.helper
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.mauk.absen.viewmodel.TugasViewModel
 
 class SharePref {
     internal var mContext : Context
@@ -44,6 +45,28 @@ class SharePref {
     }
     fun statusLogin():Boolean{
         return sharePref.getBoolean("login", false)
+    }
+    fun isMasuk(masuk: Boolean){
+        val editor = sharePref.edit()
+        editor.putBoolean("masuk", masuk)
+        editor.apply()
+    }
+    fun statusMasuk():Boolean{
+        return sharePref.getBoolean("masuk", false)
+    }
+    fun deleteMasuk(){
+        sharePref.edit().remove("masuk").commit()
+    }
+    fun isPulang(masuk: Boolean){
+        val editor = sharePref.edit()
+        editor.putBoolean("pulang", masuk)
+        editor.apply()
+    }
+    fun statusPulang():Boolean{
+        return sharePref.getBoolean("pulang", false)
+    }
+    fun deletePulang(){
+        sharePref.edit().remove("pulang").commit()
     }
     fun deleteAllSetting(){
         sharePref.edit().remove("nis").commit()

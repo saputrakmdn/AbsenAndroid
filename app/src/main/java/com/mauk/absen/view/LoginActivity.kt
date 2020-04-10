@@ -1,21 +1,22 @@
 package com.mauk.absen.view
 
-import android.content.ComponentName
+import android.app.AlertDialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
+import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log.i
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
+import android.view.Gravity
+import android.view.ViewGroup
+import android.view.WindowManager
+import android.widget.*
 import com.mauk.absen.R
-import com.mauk.absen.Tes
-import com.mauk.absen.TesService
 import com.mauk.absen.helper.SharePref
 import com.mauk.absen.model.Siswa
 import com.mauk.absen.service.Api
 import com.mauk.absen.service.Const
+import kotlinx.android.synthetic.main.login_activity.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -29,17 +30,28 @@ class LoginActivity: AppCompatActivity() {
     private var etNis : EditText? = null
     private var btn : Button? = null
     var retrofit: Retrofit? = null
+    private val LOCATION_PERMISSION = 1
     lateinit var set: SharePref
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_activity)
-        etNis = findViewById(R.id.inputNik)
+        if(ActivityCompat.checkSelfPermission(this,
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
+            PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                LOCATION_PERMISSION
+            )
+        }
+            etNis = findViewById(R.id.inputNik)
         btn = findViewById(R.id.btnMasuk)
         set = SharePref(this)
         val st = set.statusLogin()
 
         if (st == true){
             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+            finish()
         }
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
@@ -50,11 +62,58 @@ class LoginActivity: AppCompatActivity() {
             .build()
         retrofit = Retrofit.Builder().client(client).baseUrl(Const.base_url).addConverterFactory(GsonConverterFactory.create()).build()
         val postlogin = retrofit!!.create(Api::class.java)
+
         btn!!.setOnClickListener {
+            val llPadding = 30
+            val ll = LinearLayout(this)
+            ll.orientation = LinearLayout.HORIZONTAL
+            ll.setPadding(llPadding, llPadding, llPadding, llPadding)
+            ll.gravity = Gravity.CENTER
+            var llParam = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            llParam.gravity = Gravity.CENTER
+            ll.layoutParams = llParam
+
+            val progressBar = ProgressBar(this)
+            progressBar.isIndeterminate = true
+            progressBar.setPadding(0, 0, llPadding, 0)
+            progressBar.layoutParams = llParam
+
+            llParam = LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            llParam.gravity = Gravity.CENTER
+            val tvText = TextView(this)
+            tvText.text = "Loading ..."
+            tvText.setTextColor(resources.getColor(R.color.background))
+            tvText.textSize = 20f
+            tvText.layoutParams = llParam
+
+            ll.addView(progressBar)
+            ll.addView(tvText)
+
+            val builder = AlertDialog.Builder(this)
+            builder.setCancelable(true)
+            builder.setView(ll)
+
+            val dialog = builder.create()
+            dialog.show()
+            val window = dialog.window
+            if (window != null) {
+                val layoutParams = WindowManager.LayoutParams()
+                layoutParams.copyFrom(dialog.window!!.attributes)
+                layoutParams.width = LinearLayout.LayoutParams.WRAP_CONTENT
+                layoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT
+                dialog.window!!.attributes = layoutParams
+            }
             val login = etNis!!.text.toString()
             postlogin.login("${login}").enqueue(object : Callback<Siswa>{
                 override fun onFailure(call: Call<Siswa>, t: Throwable) {
-
+                    text_input_layout.error = "NIS TIDAK TERDAFTAR"
+                    dialog.dismiss()
                 }
 
                 override fun onResponse(call: Call<Siswa>, response: Response<Siswa>) {
@@ -65,6 +124,7 @@ class LoginActivity: AppCompatActivity() {
                     set.setKelas(id_kelas)
                     startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                     set.isLogin(true)
+                    finish()
 
                 }
 
@@ -73,5 +133,57 @@ class LoginActivity: AppCompatActivity() {
 
 
     }
+    fun setProgressDialog() {
+
+        val llPadding = 30
+        val ll = LinearLayout(this)
+        ll.orientation = LinearLayout.HORIZONTAL
+        ll.setPadding(llPadding, llPadding, llPadding, llPadding)
+        ll.gravity = Gravity.CENTER
+        var llParam = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        llParam.gravity = Gravity.CENTER
+        ll.layoutParams = llParam
+
+        val progressBar = ProgressBar(this)
+        progressBar.isIndeterminate = true
+        progressBar.setPadding(0, 0, llPadding, 0)
+        progressBar.layoutParams = llParam
+
+        llParam = LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        llParam.gravity = Gravity.CENTER
+        val tvText = TextView(this)
+        tvText.text = "Loading ..."
+        tvText.setTextColor(resources.getColor(R.color.background))
+        tvText.textSize = 20f
+        tvText.layoutParams = llParam
+
+        ll.addView(progressBar)
+        ll.addView(tvText)
+
+        val builder = AlertDialog.Builder(this)
+        builder.setCancelable(true)
+        builder.setView(ll)
+
+        val dialog = builder.create()
+        dialog.show()
+        val window = dialog.window
+        if (window != null) {
+            val layoutParams = WindowManager.LayoutParams()
+            layoutParams.copyFrom(dialog.window!!.attributes)
+            layoutParams.width = LinearLayout.LayoutParams.WRAP_CONTENT
+            layoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT
+            dialog.window!!.attributes = layoutParams
+        }
+    }
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
 
 }

@@ -1,31 +1,26 @@
 package com.mauk.absen
 
-import android.app.Application
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.content.Intent
-import android.os.Build
+import android.net.Uri
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import kotlinx.android.synthetic.main.about_activity.*
 
-class FinishActivity:Application() {
-    val CHANNEL_ID = "exampleServiceChannel"
-    override fun onCreate() {
-        super.onCreate()
-        createNotificationChannel()
-        ContextCompat.startForegroundService(this,Intent(this, Tes::class.java))
-    }
-    private fun createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val serviceChannel = NotificationChannel(
-                CHANNEL_ID,
-                "Example Service Channel",
-                NotificationManager.IMPORTANCE_DEFAULT
-            )
-
-            val manager = getSystemService(NotificationManager::class.java)
-            manager.createNotificationChannel(serviceChannel)
+class FinishActivity:AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.about_activity)
+        igSmk.setOnClickListener {
+            val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/aboutsmkn5kab.tng/"))
+            startActivity(i)
+        }
+        igTkj.setOnClickListener {
+            val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/kabartkj/"))
+            startActivity(i)
+        }
+        ig.setOnClickListener {
+            val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/s.kmdn/"))
+            startActivity(i)
         }
     }
 }

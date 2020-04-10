@@ -1,15 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+              xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
               android:layout_width="match_parent"
+              android:background="@color/background"
               android:gravity="center"
               android:layout_height="match_parent">
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="Anda Telah Absen"
+              android:text="Menu Utama"
+              android:textSize="40sp"
+              android:textColor="#fff"
+              android:textAppearance="@style/TextAppearance.AppCompat.Body1"
               android:textAlignment="center"
-              android:textSize="20sp"
-              android:textColor="#000"
+              android:layout_marginBottom="50dp"
     />
+    <TableLayout android:layout_width="match_parent"
+                 android:layout_height="wrap_content">
+        <TableRow android:gravity="center">
+            <LinearLayout android:id="@+id/tugas" android:layout_margin="10dp" android:orientation="vertical">
+                <ImageView android:layout_height="100dp"
+                           android:layout_width="100dp"
+                           android:src="@drawable/tugas"
+                />
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="Tugas"
+                          android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                          android:textSize="15sp"
+                          android:textColor="#fff"
+                          android:textAlignment="center"
+                />
 
+            </LinearLayout>
+            <LinearLayout android:id="@+id/kehadiran" android:layout_margin="10dp" android:orientation="vertical">
+                <ImageView android:layout_height="100dp"
+                           android:layout_width="100dp"
+                           android:src="@drawable/hadir"
+                />
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="Kehadiran"
+                          android:textAlignment="center"
+                />
+
+            </LinearLayout>
+            <LinearLayout android:id="@+id/piket" android:layout_margin="10dp" android:orientation="vertical">
+                <ImageView android:layout_height="100dp"
+                           android:layout_width="100dp"
+                           android:src="@mipmap/ic_launcher"
+                />
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="Piket Jurusan"
+                          android:textAlignment="center"
+                />
+
+            </LinearLayout>
+        </TableRow>
+        <TableRow android:layout_marginLeft="30dp">
+            <LinearLayout android:id="@+id/btnScan" android:layout_margin="10dp" android:orientation="vertical">
+                <ImageView android:layout_height="100dp"
+                           android:layout_width="100dp"
+                           android:src="@mipmap/ic_launcher"
+                />
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="Absen Masuk"
+                          android:textAlignment="center"
+                />
+
+            </LinearLayout>
+            <LinearLayout  android:id="@+id/pulang" android:layout_margin="10dp"
+                          android:orientation="vertical">
+                <ImageView android:layout_height="100dp"
+                           android:layout_width="100dp"
+                           android:src="@mipmap/ic_launcher"
+                />
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="Absen Pulang"
+                          android:textAlignment="center"
+                />
+
+            </LinearLayout>
+            <LinearLayout android:id="@+id/tentang" android:layout_margin="10dp" android:orientation="vertical">
+                <ImageView android:layout_height="100dp"
+                           android:layout_width="100dp"
+                           android:src="@mipmap/ic_launcher"
+                />
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="About"
+                          android:textAlignment="center"
+                />
+
+            </LinearLayout>
+
+        </TableRow>
+    </TableLayout>
 </LinearLayout>

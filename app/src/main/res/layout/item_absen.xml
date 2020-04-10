@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:background="@drawable/kotak"
+              android:layout_margin="10dp"
+              android:padding="5dp"
+              android:layout_height="wrap_content">
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Tanggal :"
+              android:textSize="20sp"
+              android:textColor="#000"
+              android:layout_margin="5dp"
+    />
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="10-10-1999"
+              android:id="@+id/tanggal"
+              android:textSize="20sp"
+              android:textColor="#000"
+              android:layout_marginLeft="20dp"
+    />
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Keterangan:"
+              android:textSize="20sp"
+              android:textColor="#000"
+              android:layout_margin="5dp"
+    />
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Hadir"
+              android:textSize="20sp"
+              android:id="@+id/ket"
+              android:textAllCaps="true"
+              android:textColor="#000"
+              android:layout_marginLeft="20dp"
+    />
+
+</LinearLayout>

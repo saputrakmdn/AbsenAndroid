@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+
+>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="KEHADIRAN"
+                  android:textAlignment="center"
+                  android:textSize="20sp"
+                  android:layout_marginTop="25dp"
+                  android:layout_marginBottom="30dp"
+                  android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        />
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="400dp"
+                      android:orientation="vertical"
+                      android:background="@drawable/kotak"
+                      android:layout_margin="20dp"
+        >
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:text="ABSENSI BULAN"
+                      android:textSize="20sp"
+                      android:textColor="#000"
+                      android:layout_marginTop="10dp"
+                      android:textAlignment="center"
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:text="April"
+                      android:id="@+id/month"
+                      android:textAlignment="center"
+                      android:textColor="#000"
+                      android:textSize="17sp"
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:text="Nama"
+                      android:id="@+id/nama"
+                      android:textColor="#000"
+                      android:textSize="15sp"
+                      android:layout_marginLeft="10dp"
+
+            />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:text="Kelas"
+                      android:id="@+id/kelas"
+                      android:textColor="#000"
+                      android:textSize="15sp"
+                      android:layout_marginLeft="10dp"
+
+            />
+            <TableLayout android:layout_width="match_parent"
+                         android:layout_marginTop="30dp"
+                         android:layout_height="wrap_content">
+                <TableRow android:layout_marginTop="10dp">
+                    <TextView android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:text="Alfa"
+                              android:textSize="25sp"
+                              android:textColor="#000"
+                              android:textAllCaps="true"
+                              android:layout_marginLeft="10dp"/>
+                    <TextView android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:text="="
+                              android:textSize="25sp"
+                              android:textColor="#000"
+                              android:textAllCaps="true"
+                              android:layout_marginLeft="20dp"/>
+                    <TextView android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:text="0"
+                              android:id="@+id/alfa"
+                              android:textSize="25sp"
+                              android:textColor="#000"
+                              android:textAllCaps="true"
+                              android:layout_marginLeft="20dp"/>
+                </TableRow>
+                <TableRow android:layout_marginTop="10dp">
+                    <TextView android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:text="izin"
+                              android:textSize="25sp"
+                              android:textColor="#000"
+                              android:textAllCaps="true"
+                              android:layout_marginLeft="10dp"/>
+                    <TextView android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:text="="
+                              android:textSize="25sp"
+                              android:textColor="#000"
+                              android:textAllCaps="true"
+                              android:layout_marginLeft="20dp"/>
+                    <TextView android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:text="0"
+                              android:id="@+id/izin"
+                              android:textSize="25sp"
+                              android:textColor="#000"
+                              android:textAllCaps="true"
+                              android:layout_marginLeft="20dp"/>
+                </TableRow>
+                <TableRow android:layout_marginTop="10dp">
+                    <TextView android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:text="sakit"
+                              android:textSize="25sp"
+                              android:textColor="#000"
+                              android:textAllCaps="true"
+                              android:layout_marginLeft="10dp"/>
+                    <TextView android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:text="="
+                              android:textSize="25sp"
+                              android:textColor="#000"
+                              android:textAllCaps="true"
+                              android:layout_marginLeft="20dp"/>
+                    <TextView android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:text="0"
+                              android:id="@+id/sakit"
+                              android:textSize="25sp"
+                              android:textColor="#000"
+                              android:textAllCaps="true"
+                              android:layout_marginLeft="20dp"/>
+                </TableRow>
+                <TableRow android:layout_marginTop="50dp">
+                    <TextView android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:text="keterangan"
+                              android:textSize="15sp"
+                              android:textColor="#000"
+                              android:textAllCaps="true"
+                              android:layout_marginLeft="10dp"/>
+                    <TextView android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:text="="
+                              android:textSize="15sp"
+                              android:textColor="#000"
+                              android:textAllCaps="true"
+                              android:layout_marginLeft="20dp"/>
+                    <TextView android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:text="0"
+                              android:id="@+id/ket"
+                              android:textSize="15sp"
+                              android:textColor="#000"
+                              android:textAllCaps="true"
+                              android:layout_marginLeft="20dp"/>
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+        <Button android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:text="Detail"
+                android:id="@+id/detail"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:textAppearance="@style/Widget.AppCompat.Button.Borderless"
+        />
+    </LinearLayout>
+</ScrollView>

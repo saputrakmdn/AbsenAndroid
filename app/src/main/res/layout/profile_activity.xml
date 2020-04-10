@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_height="match_parent"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:background="@color/background"
+>
+
+<LinearLayout
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:background="@color/background"
+              android:layout_height="match_parent">
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Profile"
+              android:textAlignment="center"
+              android:textSize="25sp"
+              android:textColor="#fff"
+              android:layout_marginTop="30dp"
+    />
+    <ImageView android:layout_width="150dp"
+               android:layout_gravity="center"
+               android:id="@+id/foto"
+               android:layout_marginTop="20dp"
+               android:src="@drawable/bestkj"
+               android:layout_height="150dp"/>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="300dp"
+                  android:background="#fff"
+                  android:layout_margin="30dp"
+                  android:orientation="vertical"
+                  android:foreground="@drawable/kotak"
+                  android:id="@+id/loading"
+    >
+        <com.omjoonkim.skeletonloadingview.SkeletonLoadingView
+                android:layout_width="match_parent"
+                android:layout_margin="8dp"
+                android:layout_height="20dp"
+                app:baseColor="#fbfbfb"
+                app:deepColor="#f2f2f2"
+                app:duration="1500"
+                app:interval="1000"
+                app:progressLength="120dp"
+                app:radius="5dp"
+                app:autoStart="true"
+        />
+        <com.omjoonkim.skeletonloadingview.SkeletonLoadingView
+                android:layout_width="match_parent"
+                android:layout_margin="8dp"
+                android:layout_height="20dp"
+                app:baseColor="#fbfbfb"
+                app:deepColor="#f2f2f2"
+                app:duration="1500"
+                app:interval="1000"
+                app:progressLength="120dp"
+                app:radius="5dp"
+                app:autoStart="true"
+        />
+        <com.omjoonkim.skeletonloadingview.SkeletonLoadingView
+                android:layout_width="match_parent"
+                android:layout_margin="8dp"
+                android:layout_height="20dp"
+                app:baseColor="#fbfbfb"
+                app:deepColor="#f2f2f2"
+                app:duration="1500"
+                app:interval="1000"
+                app:progressLength="120dp"
+                app:radius="5dp"
+                app:autoStart="true"
+        />
+        <com.omjoonkim.skeletonloadingview.SkeletonLoadingView
+                android:layout_width="match_parent"
+                android:layout_margin="8dp"
+                android:layout_height="20dp"
+                app:baseColor="#fbfbfb"
+                app:deepColor="#f2f2f2"
+                app:duration="1500"
+                app:interval="1000"
+                app:progressLength="120dp"
+                app:radius="5dp"
+                app:autoStart="true"
+        />
+        <com.omjoonkim.skeletonloadingview.SkeletonLoadingView
+                android:layout_width="match_parent"
+                android:layout_margin="8dp"
+                android:layout_height="20dp"
+                app:baseColor="#fbfbfb"
+                app:deepColor="#f2f2f2"
+                app:duration="1500"
+                app:interval="1000"
+                app:progressLength="120dp"
+                app:radius="5dp"
+                app:autoStart="true"
+        />
+        <com.omjoonkim.skeletonloadingview.SkeletonLoadingView
+                android:layout_width="match_parent"
+                android:layout_margin="8dp"
+                android:layout_height="20dp"
+                app:baseColor="#fbfbfb"
+                app:deepColor="#f2f2f2"
+                app:duration="1500"
+                app:interval="1000"
+                app:progressLength="120dp"
+                app:radius="5dp"
+                app:autoStart="true"
+        />
+        <com.omjoonkim.skeletonloadingview.SkeletonLoadingView
+                android:layout_width="match_parent"
+                android:layout_margin="8dp"
+                android:layout_height="20dp"
+                app:baseColor="#fbfbfb"
+                app:deepColor="#f2f2f2"
+                app:duration="1500"
+                app:interval="1000"
+                app:progressLength="120dp"
+                app:radius="5dp"
+                app:autoStart="true"
+        />
+        <com.omjoonkim.skeletonloadingview.SkeletonLoadingView
+                android:layout_width="match_parent"
+                android:layout_margin="8dp"
+                android:layout_height="20dp"
+                app:baseColor="#fbfbfb"
+                app:deepColor="#f2f2f2"
+                app:duration="1500"
+                app:interval="1000"
+                app:progressLength="120dp"
+                app:radius="5dp"
+                app:autoStart="true"
+        />
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="300dp"
+                  android:background="#fff"
+                  android:layout_margin="30dp"
+                  android:id="@+id/main"
+                  android:visibility="gone"
+                  android:orientation="vertical"
+                  android:foreground="@drawable/kotak"
+
+    >
+        <TableLayout android:layout_width="match_parent"
+                     android:layout_marginTop="30dp"
+                     android:layout_height="wrap_content">
+            <TableRow android:layout_marginTop="10dp">
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="Nama"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="10dp"/>
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text=":"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="15dp"/>
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="Saputra kamandanu"
+                          android:id="@+id/nama"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="10dp"/>
+            </TableRow>
+            <TableRow android:layout_marginTop="10dp">
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="NIs"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="10dp"/>
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text=":"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="15dp"/>
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="123456"
+                          android:id="@+id/nis"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="10dp"/>
+            </TableRow>
+            <TableRow android:layout_marginTop="10dp">
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="Tempat Lahir"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="10dp"/>
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text=":"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="15dp"/>
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="Tangerang"
+                          android:id="@+id/tempat"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="10dp"/>
+            </TableRow>
+            <TableRow android:layout_marginTop="10dp">
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="Tanggal Lahir"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="10dp"/>
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text=":"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="15dp"/>
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="30-11-19"
+                          android:id="@+id/tanggal"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="10dp"/>
+            </TableRow>
+            <TableRow android:layout_marginTop="10dp">
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="No. Handphone"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="10dp"/>
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text=":"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="15dp"/>
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="0892"
+                          android:id="@+id/nohp"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="10dp"/>
+            </TableRow>
+            <TableRow android:layout_marginTop="10dp">
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="Jenis Kelamin"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="10dp"/>
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text=":"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="15dp"/>
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="Laki Laki"
+                          android:id="@+id/jenis"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="10dp"/>
+            </TableRow>
+
+            <TableRow android:layout_marginTop="10dp">
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="Kelas"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="10dp"/>
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text=":"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="15dp"/>
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="12TKJ1"
+                          android:id="@+id/kelas"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="10dp"/>
+            </TableRow>
+            <TableRow android:layout_marginTop="10dp">
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="Jurusan"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="10dp"/>
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text=":"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="15dp"/>
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="TKJ"
+                          android:id="@+id/jurusan"
+                          android:textSize="12sp"
+                          android:textColor="#000"
+                          android:textAllCaps="true"
+                          android:layout_marginLeft="10dp"/>
+            </TableRow>
+
+        </TableLayout>
+
+    </LinearLayout>
+</LinearLayout>
+</ScrollView>

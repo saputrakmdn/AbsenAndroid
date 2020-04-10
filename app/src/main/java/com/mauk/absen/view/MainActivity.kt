@@ -3,7 +3,6 @@ package com.mauk.absen.view
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.text.format.Time
 import android.util.Log.*
 import android.view.View
 import android.widget.Toast
@@ -42,7 +41,21 @@ class MainActivity : AppCompatActivity() {
         set = SharePref(this)
         var time = Calendar.getInstance().time.hours
         i("tag", "$time")
+        if (set.statusMasuk() == true){
+            btnScan.visibility = View.GONE
 
+        }
+        if (set.statusPulang() == true){
+
+            pulang.visibility = View.GONE
+
+        }
+        tentang.setOnClickListener {
+            startActivity(Intent(this, FinishActivity::class.java))
+        }
+        piket.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
         val client = OkHttpClient.Builder()
@@ -51,20 +64,39 @@ class MainActivity : AppCompatActivity() {
             .readTimeout(100, TimeUnit.SECONDS)
             .build()
         retrofit = Retrofit.Builder().client(client).baseUrl(Const.base_url).addConverterFactory(GsonConverterFactory.create()).build()
+        when(time){
+            6, 7, 8 ->{
+                set.deletePulang()
+                pulang.visibility = View.GONE
 
+            }
+            15, 16, 17-> {
+                btnScan.visibility = View.GONE
+                set.deleteMasuk()
+
+            }
+            else->{
+                pulang.visibility = View.GONE
+                btnScan.visibility = View.GONE
+
+            }
+        }
         btnScan.setOnClickListener {
             run{
                 IntentIntegrator(this@MainActivity).setRequestCode(25).setOrientationLocked(true).initiateScan()
             }
         }
-        when(time){
-            21, 22, 23 -> btnScan.visibility = View.GONE
-            20-> pulang.visibility = View.GONE
-        }
+
         pulang.setOnClickListener {
             run{
                 IntentIntegrator(this@MainActivity).setRequestCode(20).setOrientationLocked(true).initiateScan()
             }
+        }
+        tugas.setOnClickListener {
+            startActivity(Intent(this, TugasActivity::class.java))
+        }
+        kehadiran.setOnClickListener {
+            startActivity(Intent(this, AbsenActivity::class.java))
         }
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -80,7 +112,6 @@ class MainActivity : AppCompatActivity() {
                     i("tes", "a"+result.contents)
                     val id = set.getAbsen()
                     w("tag", "WOY$id")
-                    txtValue.text = "1111"
                     val absenpulang = retrofit!!.create(Api::class.java)
                     absenpulang.pulang("${id}").enqueue(object : Callback<Absen>{
                         override fun onFailure(call: Call<Absen>, t: Throwable) {
@@ -88,14 +119,21 @@ class MainActivity : AppCompatActivity() {
                         }
 
                         override fun onResponse(call: Call<Absen>, response: Response<Absen>) {
-                            Toast.makeText(this@MainActivity, "Finis", Toast.LENGTH_SHORT).show()
+                            if (response.code() == 200){
+                                Toast.makeText(this@MainActivity, "Finis", Toast.LENGTH_SHORT).show()
+                                set.isPulang(true)
+                                pulang.visibility = View.GONE
+                            }else{
+                                Toast.makeText(this@MainActivity, "Belum Absen Masuk", Toast.LENGTH_SHORT).show()
+                            }
+
+
                         }
 
                     })
 
 
                 } else {
-                    txtValue.text = "scan failed"
                 }
             }else if(requestCode == 25){
                 if(result.contents != null){
@@ -104,7 +142,6 @@ class MainActivity : AppCompatActivity() {
                     i("tes", "a"+result.contents)
                     val id = set.readSetting(Const.PREF_MY_ID)
                     val kelas = set.getKelas()
-                    txtValue.text = scannedResult
                     val absenMasuk = retrofit!!.create(Api::class.java)
                     absenMasuk.masuk("${scan}", "${id}", "${kelas}").enqueue(object : Callback<Absen>{
                         override fun onFailure(call: Call<Absen>, t: Throwable) {
@@ -114,13 +151,15 @@ class MainActivity : AppCompatActivity() {
                         override fun onResponse(call: Call<Absen>, response: Response<Absen>) {
                             i("id", "ini id"+response.body()!!.id)
                             val id = response.body()!!.id
+                            btnScan.visibility = View.GONE
                             set.setAbsen(id)
+                            set.isMasuk(true)
                         }
 
                     })
 
                 } else {
-                    txtValue.text = "scan failed"
+
                 }
             }
 
@@ -141,16 +180,48 @@ class MainActivity : AppCompatActivity() {
 
         savedInstanceState?.let {
             scannedResult = it.getString("scannedResult")
-            txtValue.text = scannedResult
+
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        var time = Calendar.getInstance().time.hours
+        when(time){
+            1-> onDestroy()
         }
     }
 
     override fun onStart() {
         super.onStart()
         var time = Calendar.getInstance().time.hours
+        set = SharePref(this)
+        if (set.statusMasuk() == true){
+            btnScan.visibility = View.GONE
+
+        }
+        if (set.statusPulang() == true){
+
+            pulang.visibility = View.GONE
+
+        }
         when(time){
-            21, 22, 23 -> btnScan.visibility = View.GONE
-            20-> pulang.visibility = View.GONE
+            6, 7, 8 ->{
+                set.deletePulang()
+                pulang.visibility = View.GONE
+
+            }
+            15, 16, 17-> {
+                btnScan.visibility = View.GONE
+
+                set.deleteMasuk()
+
+            }
+            else->{
+                pulang.visibility = View.GONE
+                btnScan.visibility = View.GONE
+
+            }
         }
     }
 }
