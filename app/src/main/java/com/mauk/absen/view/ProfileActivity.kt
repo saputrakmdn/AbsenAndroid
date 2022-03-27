@@ -29,7 +29,7 @@ class ProfileActivity: AppCompatActivity() {
             tanggal.text = it.tanggallahir
             nohp.text = it.nohp
             val b = it.foto
-            var url = "http://35.240.167.224/fotosiswa/${b}"
+            var url = "http://192.168.112.94:8000/fotosiswa/${b}"
 
             Glide.with(this).load(url).listener(object : RequestListener<Drawable>{
                 override fun onLoadFailed(

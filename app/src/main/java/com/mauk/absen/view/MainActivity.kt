@@ -169,17 +169,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
 
         outState?.putString("scannedResult", scannedResult)
         super.onSaveInstanceState(outState)
     }
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
 
         savedInstanceState?.let {
-            scannedResult = it.getString("scannedResult")
+            scannedResult = it.getString("scannedResult")!!
 
         }
     }

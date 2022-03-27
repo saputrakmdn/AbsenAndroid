@@ -15,7 +15,7 @@ class SharePref {
         sharePref = mContext.getSharedPreferences("nis", Context.MODE_PRIVATE)
     }
     fun readSetting(key: String):String{
-        return sharePref.getString(key, "na")
+        return sharePref.getString(key, "na")!!
     }
     fun updateSetting(key: String, value: String){
         val editor = sharePref.edit()
@@ -28,7 +28,7 @@ class SharePref {
         editor.apply()
     }
     fun getKelas(): String{
-        return sharePref.getString(KELAS, " ")
+        return sharePref.getString(KELAS, " ")!!
     }
     fun setAbsen(absen: String){
         val editor = sharePref.edit()
@@ -36,7 +36,7 @@ class SharePref {
         editor.apply()
     }
     fun getAbsen(): String{
-        return sharePref.getString(ABSEN, " ")
+        return sharePref.getString(ABSEN, " ")!!
     }
     fun isLogin(tes: Boolean){
         val editor = sharePref.edit()
